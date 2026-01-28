@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wanna be My Valentine??</title>
+
+  <!-- ✅ Fonts (THIS fixes the issue) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f8c8dc;
+      font-family: "Roboto", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .headerText {
+  --font-family: "Pacifico", cursive;
+  font-size: 42px;
+  text-align: center;
+  margin: 30px 10px 20px;
+}
+
+    .flex {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button {
+      background-color: #ff4f99;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #ff71ac;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .image {
+      width: 350px;
+      height: 350px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      margin-top: 20px;
+    }
+
+    .image1 {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      mix-blend-mode: multiply;
+      animation: floatUp 2s ease-in-out;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .model {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .model-content {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      width: 350px;
+      text-align: center;
+    }
+
+    .modelText {
+      font-family: "Lovers Quarrel", cursive;
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    .modelImg {
+      width: 100%;
+      max-height: 250px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .f-aps {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="headerText" id="wedate">
+    Sanelisiwe Moni, would you be my valentine? 🥺
+  </h1>
+
+  <div class="flex" id="btns">
+    <button class="button" onmouseenter="happy()" onmouseleave="normal()" onclick="yes()">Yes 🥰</button>
+    <button class="button" onmouseenter="angry()" onmouseleave="normal()" onclick="no()">No 😭</button>
+  </div>
+
+  <img
+    id="mainImg"
+    class="image"
+    src="https://github.com/NikhilMarko03/resources/blob/main/happy1.gif?raw=true"
+  />
+
+  <div id="absImg">
+    <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true">
+    <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true">
+    <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true">
+    <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true">
+    <img class="image1" src="https://github.com/NikhilMarko03/resources/blob/main/heart.gif?raw=true">
+  </div>
+
+  <!-- NO modal -->
+  <div class="model" id="model">
+    <div class="model-content">
+      <p class="modelText" id="modelText">Please</p>
+      <img id="modelImg" class="modelImg">
+      <div class="flex">
+        <button class="button" onclick="yes()">Yes 🥰</button>
+        <button class="button" onclick="no()">No 😭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- YES modal -->
+  <div class="model" id="model2">
+    <div class="model-content">
+      <p class="modelText">I Love you sweetheart! 😘😘</p>
+      <img
+        class="modelImg"
+        src="https://drive.google.com/thumbnail?id=1_SjjmbICLVIESgI9nZ1paCreUeRk7ft_&sz=w1000"
+      >
+      <button class="button" onclick="ly2()">Love You Too 🥰</button>
+    </div>
+  </div>
+
+  <div class="f-aps">
+    Made with ❤️ by <strong>Luthando</strong>
+  </div>
+
+  <script>
+    document.querySelectorAll(".image1").forEach(img => {
+      img.style.top = Math.random() * window.innerHeight + "px";
+      img.style.left = Math.random() * window.innerWidth + "px";
+    });
+
+    const sadCat = [
+      "https://media1.tenor.com/images/9413ffc5a11722a3cc456a88810750bd/tenor.gif",
+      "https://emoji.gg/assets/emoji/5228_cat_cri.gif",
+      "https://media3.giphy.com/media/qpCvOBBmBkble/giphy.gif"
+    ];
+
+    const blackmail = [
+      "Please",
+      "I'm begging you",
+      "I'm crying",
+      "Really??",
+      "Please say yes"
+    ];
+
+    function angry() {
+      mainImg.src = "https://github.com/NikhilMarko03/resources/blob/main/sad1.gif?raw=true";
+    }
+
+    function happy() {
+      mainImg.src = "https://github.com/NikhilMarko03/resources/blob/main/happy3.gif?raw=true";
+    }
+
+    function normal() {
+      mainImg.src = "https://github.com/NikhilMarko03/resources/blob/main/happy1.gif?raw=true";
+    }
+
+    function no() {
+      model.style.display = "flex";
+      modelImg.src = sadCat[Math.floor(Math.random() * sadCat.length)];
+      modelText.innerText = blackmail[Math.floor(Math.random() * blackmail.length)];
+    }
+
+    function yes() {
+      btns.style.display = "none";
+      wedate.innerText = "Sho ke! Have a productive day apho eMaersk.";
+      model.style.display = "none";
+      model2.style.display = "flex";
+    }
+
+    function ly2() {
+      model2.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
